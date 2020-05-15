@@ -142,7 +142,9 @@ class Lambdasian {
 class Instructor extends Lambdasian{
   constructor(attr) {
     super(attr);
-    
+    this.specialty = attr.specialty;
+    this.favLanguage = attr.favLanguage;
+    this.catchPhrase = attr.catchPhrase;
   };
   demo(subject){
     return `Today we are learning about ${subject}`
@@ -151,12 +153,7 @@ class Instructor extends Lambdasian{
     return `${student.name} recieves a perfect score on ${subjectString}`
   }
 }
-const paul = new Instructor({
-  speciality: 'Crushing it',
-  favLanguage: 'Hungarian',
-  catchPhrase: 'yada yada yada'
-  
-})
+
 
 /*
   TASK 5
@@ -176,17 +173,18 @@ const paul = new Instructor({
 class Student extends Lambdasian{
   constructor(attr) {
     super(attr);
-    this.previousBackground = "Chartered Accountant";
-    this.className = 'CS132';
-    this.favSubjects = ['JS', 'Node', 'Redux'];
-  } listSubject() {
-    return this.favSubjects.toString;
+    this.previousBackground = attr.previousBackground;
+    this.className = attr.className;
+    this.favSubjects = attr.favSubjects;
+  } 
+    listSubjects() {
+    return this.favSubjects.toString();
   }
     PRAssignment(subject) {
-      return `${Student.name} has submitted a PR for ${subject}`;
+      return `${this.name} has submitted a PR for ${subject}`;
     }
     sprintChallenge(subject) {
-      return `${Student.name} has begun sprint challenge on ${subject}`;
+      return `${this.name} has begun sprint challenge on ${subject}`;
     }
 
 }
@@ -204,19 +202,22 @@ class Student extends Lambdasian{
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
+
+
 class ProjectManager extends Instructor{
   constructor(attr) {
     super(attr);
-    this.gradClassName = 'CS1';
-    this.favInstructor = 'Sean';
+    this.gradClassName = attr.gradClassName;
+    this.favInstructor = attr.favInstructor;
   }
   standUp(slackChannel) {
-    return `${name} announces to ${slackChannel} @channel standy times!`
+    return `${this.name} announces to ${slackChannel} @channel standy times!`
   }
   debugsCode(student, subject) {
-    `${name} debugs ${student.name}'s code on ${subject}`
+   return `${this.name} debugs ${student.name}'s code on ${subject}`
   }
 }
+
 
 /*
   STRETCH PROBLEM (no tests!)
@@ -225,7 +226,10 @@ class ProjectManager extends Instructor{
     - Add a graduate method to a student.
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
-*/
+
+      let points = Math.floor(Math.random() * (10 - -10) ) + -10;
+
+      */
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
